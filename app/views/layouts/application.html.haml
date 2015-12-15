@@ -6,4 +6,18 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+    #wrapper
+      =render "layouts/nav"
+      #page-wrapper
+        .container-fluid
+          .row
+            .col-lg-12
+              %h1.page-header
+                =yield(:page_header)
+                %small=yield(:sub_header)
+              %ol.breadcrumb
+                %li
+                  %i.fa.fa-desktop
+                  %a{:href => "/"} Home
+          .row
+            = yield
