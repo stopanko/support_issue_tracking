@@ -11,7 +11,10 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem 'haml'
+gem 'devise'
+gem 'activeadmin', github: 'activeadmin'
+gem 'active_skin'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
