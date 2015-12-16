@@ -16,6 +16,14 @@
               %h1.page-header
                 =yield(:page_header)
                 %small=yield(:sub_header)
+              -if flash[:alert]
+                .alert.alert-danger
+                  %strong Alert!
+                  =flash[:alert]
+              -if flash[:notice]
+                .alert.alert-success
+                  %strong Success!
+                  =flash[:notice]
               %ol.breadcrumb
                 %li
                   %i.fa.fa-desktop

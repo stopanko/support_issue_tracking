@@ -8,7 +8,7 @@
       New ticket
 -content_for :dashboard_nav do
   active
-.col-sm-6
+.col-sm-7
   .panel.panel-primary
     .panel-heading
       %h3.panel-title Create ticket
@@ -17,9 +17,24 @@
         =form_for @ticket, method: :post, role: "form" do |f|
           .form-group
             =f.label :email
-            %input{class:"form-control"}
-            =f.email_field :email, calass: "form-control"
-          =f.text_field :user_name
-          =f.select :problem_type_id, options_from_collection_for_select(ProblemType.all, "id", "name")
-          =f.text_field :title
-          =f.text_area :text
+            =f.email_field :email, class: "form-control"
+          .form-group
+            =f.label :user_name
+            =f.text_field :user_name, class: "form-control"
+          .form-group
+            =f.label :problem_type_id
+            =f.select :problem_type_id, options_from_collection_for_select(ProblemType.active_problem_types, "id", "name"), {prompt: "Select Problem Type"}, class: "form-control"
+          .form-group
+            =f.label :title
+            =f.text_field :title, class: "form-control"
+          .form-group
+            =f.label :text
+            =f.text_area :text, class: "form-control"
+          .form-group
+            =f.submit "Create", class: "btn btn-default"
+.col-sm-5
+  .panel.panel-success
+    .panel-heading
+      %h3.panel-title Info
+    .panel-body
+      .col-lg-12
