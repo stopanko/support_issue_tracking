@@ -108,11 +108,11 @@
   / Sidebar Menu Items - These collapse to the responsive navigation menu on small screens
   .collapse.navbar-collapse.navbar-ex1-collapse
     %ul.nav.navbar-nav.side-nav
-      %li
+      %li{class: (yield(:home_nav))}
         =link_to root_path do
           %i.fa.fa-fw.fa-desktop
           Home
-      %li
+      %li{class: (yield(:dashboard_nav))}
         =link_to tickets_path do
           %i.fa.fa-fw.fa-dashboard
           Dashboard
@@ -146,7 +146,7 @@
             %a{:href => "#"} Dropdown Item
           %li
             %a{:href => "#"} Dropdown Item
-      %li.active
+      %li
         %a{:href => "blank-page.html"}
           %i.fa.fa-fw.fa-file
           Blank Page

@@ -1,0 +1,25 @@
+-content_for :page_header do
+  Create Ticket
+-content_for :sub_header do
+  New ticket page
+-content_for :current_page_breadcrumb do
+  %i.fa.fa-dashboard
+    =link_to new_ticket_path do
+      New ticket
+-content_for :dashboard_nav do
+  active
+.col-sm-6
+  .panel.panel-primary
+    .panel-heading
+      %h3.panel-title Create ticket
+    .panel-body
+      .col-lg-12
+        =form_for @ticket, method: :post, role: "form" do |f|
+          .form-group
+            =f.label :email
+            %input{class:"form-control"}
+            =f.email_field :email, calass: "form-control"
+          =f.text_field :user_name
+          =f.select :problem_type_id, options_from_collection_for_select(ProblemType.all, "id", "name")
+          =f.text_field :title
+          =f.text_area :text
