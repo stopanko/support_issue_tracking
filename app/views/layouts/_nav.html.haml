@@ -109,11 +109,11 @@
   .collapse.navbar-collapse.navbar-ex1-collapse
     %ul.nav.navbar-nav.side-nav
       %li
-        %a{:href => "/"}
+        =link_to root_path do
           %i.fa.fa-fw.fa-desktop
           Home
       %li
-        %a{:href => "index.html"}
+        =link_to tickets_path do
           %i.fa.fa-fw.fa-dashboard
           Dashboard
       %li

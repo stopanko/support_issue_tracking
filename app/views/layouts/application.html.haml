@@ -5,6 +5,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    %link{rel:"shortcut icon", href:"/assets/ruby-icon.png", type:"image/png"}
   %body
     #wrapper
       =render "layouts/nav"
@@ -19,5 +20,7 @@
                 %li
                   %i.fa.fa-desktop
                   %a{:href => "/"} Home
+                %li
+                  =yield(:current_page_breadcrumb)
           .row
             = yield
