@@ -1,8 +1,7 @@
-class CreateProblemTypes < ActiveRecord::Migration
+class CreateStatuses < ActiveRecord::Migration
   def change
-    create_table :problem_types do |t|
+    create_table :statuses do |t|
       t.string :name
-      t.string :color
       t.boolean :active, default: true
       t.timestamps null: false
     end
