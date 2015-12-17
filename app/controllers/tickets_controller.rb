@@ -43,7 +43,7 @@ class TicketsController < ApplicationController
 
   def get_last_tickets_comments
     # @last_comments = Comment.where(commentable_type: "Ticket", commentable_id: @tickets.pluck(:id)).last(5) if params[:email]
-    @last_comments = @tickets.each.map{|ticket| ticket.comments.last }.compact
+    @last_comments = @tickets.each.map{|ticket| ticket.comments.last }.compact if params[:email]
     p "@last_comments"
     p @last_comments
   end
