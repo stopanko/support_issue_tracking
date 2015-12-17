@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  add_breadcrumb 'Home', :root_path, prepend: '<i class="fa fa-desktop"></i> '
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   helper_method :get_ticket
