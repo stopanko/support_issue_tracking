@@ -36,7 +36,12 @@ class TicketsController < ApplicationController
   end
 
   def get_user_tickets
-    @tickets = Ticket.user_tickets(params[:email]) if params[:email]
+    @tickets = Ticket.user_tickets(params[:email]).paginate(page: params[:page], per_page: 2) if params[:email]
+    get_last_tickets_comments
+  end
+
+  def get_last_tickets_comments
+    @last_comments = Comment.where(commentable_type: "Ticket", commentable_id: @tickets.pluck(:id)).last(5) if params[:email]
   end
 
 

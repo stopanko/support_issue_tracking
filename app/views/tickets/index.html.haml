@@ -37,16 +37,30 @@
                 %th Actions
             %tbody
               -@tickets.each do |ticket|
-                %tr.active
+                %tr{class: (cycle('active', '')), style: "background-color: #{ticket.status.color}"}
                   %td=ticket.id
                   %td=ticket.title
                   %td=ticket.status.name
                   %td=ticket.problem_type.name
-                  %td=ticket.comments.count
+                  %td=link_to ticket.comments.count, ticket_path(ticket.id)
                   %td
                     =link_to "Show", ticket_path(ticket.id)
                     |
                     =link_to "Edit", edit_ticket_path(ticket.id)
+          =will_paginate @tickets, renderer: BootstrapPagination::Rails
+  .col-sm-5
+    .panel.panel-success
+      .panel-heading
+        %h3.panel-title
+          %i.fa.fa-clock-o.fa-fw
+          Last Comments
+      .panel-body
+        .table-responsive
+          -@last_comments.each do |comment|
+            =link_to ticket_path(comment.commentable_id) do
+              .well
+                =comment.text
+
 -#<div id="page-wrapper">
 -#
 -#  <div class="container-fluid">

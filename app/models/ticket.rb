@@ -1,5 +1,5 @@
 class Ticket < ActiveRecord::Base
-  before_create :set_default_status
+  before_validation :set_default_status, on: :create
   validates_presence_of :user_name, :email, :title, :text, :problem_type_id, :status_id
   belongs_to :problem_type
   belongs_to :status
