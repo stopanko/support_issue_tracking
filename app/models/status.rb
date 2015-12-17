@@ -5,4 +5,6 @@ class Status < ActiveRecord::Base
   scope :costumer_default, -> {where(costumer_default: true)}
   scope :admin_default, -> {where(admin_default: true)}
 
+  has_many :tickets
+
 end

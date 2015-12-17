@@ -4,5 +4,10 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  resources :tickets
+  resources :tickets do
+    member do
+      resource :comment
+    end
+  end
+
 end

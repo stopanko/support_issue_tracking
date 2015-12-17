@@ -1,0 +1,44 @@
+-content_for :page_header do
+  Show Ticket
+-content_for :sub_header do
+  ticket page
+-content_for :current_page_breadcrumb do
+  %i.fa.fa-dashboard
+    =link_to ticket_path(@ticket.id) do
+      Show Ticket
+.col-sm-7
+  .panel.panel-primary
+    .panel-heading
+      %h3.panel-title Ticket info
+    .panel-body
+      =label_tag :problem_type
+      .well
+        =@ticket.problem_type.name
+      =label_tag :status
+      .well
+        =@ticket.status.name
+      =label_tag :title
+      .well
+        =@ticket.title
+      =label_tag :text
+      .well
+        =@ticket.text
+      %hr
+      =form_for @comment, url: comment_path(@ticket.id), method: :post do |f|
+        =f.label "Comment Text"
+        .well
+          =f.text_area :text, class: "form-control"
+        =f.submit "Comment", class: "btn btn-default"
+      %hr
+      =label_tag :comments
+      -@comments.each do |comment|
+        .well
+          =comment.text
+.col-sm-5
+  .panel.panel-success
+    .panel-heading
+      %h3.panel-title
+        %i.fa.fa-clock-o.fa-fw
+        Ticket history
+    .panel-body
+      .col-lg-12
