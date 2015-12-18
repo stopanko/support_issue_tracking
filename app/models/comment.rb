@@ -2,9 +2,9 @@ class Comment < ActiveRecord::Base
   before_save :set_ticket_status
   before_save :set_ticket_history
   validates_presence_of :text, :commentable_id, :commentable_type
-  validates :text, length: {minimum: 1}
+  validates :text, length: {minimum: 2}
   belongs_to :commentable, polymorphic: true
-
+  belongs_to :admin_user
 
 
 
@@ -12,9 +12,9 @@ class Comment < ActiveRecord::Base
 
   def set_ticket_history
     if self.new_record?
-      self.commentable.ticket_histories.create(action_name: "create comment")
+      self.commentable.ticket_histories.create(action_name: "create comment", admin_user_id: self.admin_user_id ? self.admin_user_id : nil)
     else
-      self.commentable.ticket_histories.create(action_name: "edit comment")
+      self.commentable.ticket_histories.create(action_name: "edit comment") unless self.admin_user_id
     end
   end
 

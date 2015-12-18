@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
   respond_to :html
 
-  before_action :get_ticket, only: [:show, :edit, :update]
+  before_action :get_ticket, only: [:show, :edit, :update, :get_next_ticket_history]
   before_action :get_user_tickets, only: [:index]
 
   def index
@@ -9,14 +9,18 @@ class TicketsController < ApplicationController
   end
 
   def new
+    add_breadcrumb 'Dashboard', :tickets_path, prepend: '<i class="fa fa-dashboard"></i> '
     add_breadcrumb 'Create ticket', :new_ticket_path, prepend: '<i class="fa fa-edit"></i> '
     @ticket = Ticket.new
   end
 
   def show
-    @comment = @ticket.comments.new
-    @comments = @ticket.comments
-    @ticket_histories = @ticket.get_histories
+    add_breadcrumb 'Dashboard', :tickets_path, prepend: '<i class="fa fa-dashboard"></i> '
+    add_breadcrumb 'Ticket', ticket_path(@ticket.id), prepend: '<i class="fa fa-user"></i> '
+    add_breadcrumb 'Edit', edit_ticket_path(@ticket.id), prepend: '<i class="fa fa-edit"></i> '
+    @comment = Comment.new
+    @comments = @ticket.comments.limit(5)
+    @ticket_histories = @ticket.get_histories.limit(5)
   end
 
   def create
@@ -32,12 +36,14 @@ class TicketsController < ApplicationController
 
 
   def edit
-
+    add_breadcrumb 'Dashboard', :tickets_path, prepend: '<i class="fa fa-dashboard"></i> '
+    add_breadcrumb 'Ticket', ticket_path(@ticket.id), prepend: '<i class="fa fa-user"></i> '
+    add_breadcrumb 'Edit', edit_ticket_path(@ticket.id), prepend: '<i class="fa fa-edit"></i> '
   end
 
 
   def update
-    if @ticket.update_attributes(ticket_params)
+    if @ticket.update_attributes(ticket_params.merge!(admin_update_id: nil))
       flash[:notice] = "Updated successfully"
       redirect_to ticket_path(@ticket.id)
     else
@@ -46,10 +52,15 @@ class TicketsController < ApplicationController
     end
   end
 
+  def get_next_ticket_history
+    @next_histories = @ticket.get_histories.offset(params[:history_count]).limit(5)
+    respond_to :js
+  end
+
   private
 
   def ticket_params
-    params.require(:ticket).permit(:user_name, :email, :title, :text, :problem_type_id, :status_id)
+    params.require(:ticket).permit(:admin_update_id, :user_name, :email, :title, :text, :problem_type_id, :status_id)
   end
 
   def get_user_tickets

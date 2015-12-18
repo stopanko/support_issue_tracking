@@ -15,7 +15,7 @@
       .well
         =@ticket.problem_type.name
       =label_tag :status
-      .well
+      .well{style: "background-color: #{@ticket.status.color}"}
         =@ticket.status.name
       =label_tag :title
       .well
@@ -31,9 +31,10 @@
         =f.submit "Comment", class: "btn btn-default"
       %hr
       =label_tag :comments
-      -@comments.each do |comment|
-        .well
-          =comment.text
+      =@comments.count
+      .ticket_comments
+        =render partial: "comments/comment_line", collection: @comments, as: :comment
+        #ticket_comments_element
 .col-sm-5
   .panel.panel-success
     .panel-heading
@@ -42,13 +43,6 @@
         Ticket history
     .panel-body
       .col-lg-12
-        -@ticket_histories.each do |history|
-          .well
-            -if history.admin_user_id
-              =history.admin_user.email
-            -else
-              =history.ticket.email
-            .well
-              =history.action_name
-              .pull-right
-                =history.created_at.strftime("%d-%M-%Y")
+        .ticket_history
+          =render partial: "ticket_history_line", collection: @ticket_histories, as: :history
+          #ticket_history_element

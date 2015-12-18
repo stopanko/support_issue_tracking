@@ -1,0 +1,9 @@
+.well.comment_line
+  -if comment.admin_user_id
+    =comment.admin_user.email
+  -else
+    =comment.commentable.email
+  .well.history_action_info
+    =comment.text
+    .pull-right
+      =comment.created_at.strftime("%d-%M-%Y")

@@ -7,7 +7,7 @@
 .col-lg-12.text-center
   .panel.panel-default
     .panel-body
-      =link_to "new ticket", new_ticket_path
+      =link_to "New ticket", new_ticket_path
 .col-lg-12.text-center
   .panel.panel-default
     .panel-body
@@ -33,7 +33,7 @@
                 %th Actions
             %tbody
               -@tickets.each do |ticket|
-                %tr{class: (cycle('active', '')), style: "background-color: #{ticket.status.color}"}
+                %tr{style: "background-color: #{ticket.status.color}"}
                   %td=ticket.id
                   %td=ticket.title
                   %td=ticket.status.name

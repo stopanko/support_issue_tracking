@@ -1,0 +1,8 @@
+<%if @next_histories.count > 0%>
+    $("#ticket_history_element").prepend(
+            '<%=j render partial: "ticket_history_line", collection: @next_histories, as: :history%>'
+    );
+    $.can_load_ticket_history = true;
+<%end%>
+
+Waypoint.refreshAll();

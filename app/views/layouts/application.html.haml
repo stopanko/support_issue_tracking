@@ -7,6 +7,8 @@
     = csrf_meta_tags
     %link{rel:"shortcut icon", href:"/assets/ruby-icon.png", type:"image/png"}
   %body
+    .hidden
+      =render "layouts/links_for_scripts"
     #wrapper
       =render "layouts/nav"
       #page-wrapper

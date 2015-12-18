@@ -17,7 +17,7 @@ GIT
       sass-rails
 
 GIT
-  remote: git@github.com:stopanko/breadcrumbs_on_rails.git
+  remote: https://github.com/stopanko/breadcrumbs_on_rails.git
   revision: 765600df0d1133edd53a47fe96eea6eba93803f7
   specs:
     breadcrumbs_on_rails (2.3.1)

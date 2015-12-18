@@ -15,4 +15,21 @@ ActiveAdmin.register Status do
 # end
 
 
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :active
+    column :created_at
+    column :updated_at
+    column :customer_default
+    column :admin_default
+    column :color do |o|
+      "<div style= 'background-color:#{o.color}'>&nbsp;</div>".html_safe
+
+    end
+    actions
+  end
+
+
 end

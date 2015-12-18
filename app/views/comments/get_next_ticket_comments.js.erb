@@ -1,0 +1,8 @@
+<%if @next_ticket_comments.count > 0%>
+    $("#ticket_comments_element").prepend(
+      '<%=j render partial: "comments/comment_line", collection: @next_ticket_comments, as: :comment%>'
+    );
+
+    $.can_load_ticket_comments = true;
+<%end%>
+Waypoint.refreshAll();

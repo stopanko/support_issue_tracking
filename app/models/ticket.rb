@@ -7,10 +7,10 @@ class Ticket < ActiveRecord::Base
 
   scope :user_tickets, ->(user_email) {where(email: user_email)}
 
-  has_many :comments, as: :commentable
-  has_many :ticket_histories
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :ticket_histories, dependent: :destroy
 
-  accepts_nested_attributes_for :comments
+  accepts_nested_attributes_for :comments, :allow_destroy => true
 
 
   def get_histories
@@ -20,9 +20,9 @@ class Ticket < ActiveRecord::Base
   private
   def set_ticket_history
     if self.new_record?
-      self.ticket_histories.new(action_name: "create ticket")
+      self.ticket_histories.new(action_name: "create ticket", admin_user_id: self.admin_update_id ? self.admin_update_id : nil)
     else
-      self.ticket_histories.new(action_name: "edit ticket")
+      self.ticket_histories.new(action_name: "edit ticket", admin_user_id: self.admin_update_id ? self.admin_update_id : nil) if self.changed?
     end
   end
 

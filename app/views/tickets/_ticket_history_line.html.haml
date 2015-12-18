@@ -1,0 +1,13 @@
+.history_line
+  .well
+    -if history.admin_user_id
+      =history.admin_user.email
+    -else
+      -if history.admin_user_id
+        =history.ticket.admin_user.email
+      -else
+        =history.ticket.email
+    .well.history_action_info
+      =history.action_name
+      .pull-right
+        =history.created_at.strftime("%d-%M-%Y")

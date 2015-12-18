@@ -18,7 +18,7 @@ gem 'active_skin'
 gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-gem 'breadcrumbs_on_rails', :git => 'git@github.com:stopanko/breadcrumbs_on_rails.git'
+gem 'breadcrumbs_on_rails', :git => 'https://github.com/stopanko/breadcrumbs_on_rails.git'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
