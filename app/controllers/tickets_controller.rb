@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
   respond_to :html
 
-  before_action :get_ticket, only: [:show]
+  before_action :get_ticket, only: [:show, :edit, :update]
   before_action :get_user_tickets, only: [:index]
 
   def index
@@ -16,6 +16,7 @@ class TicketsController < ApplicationController
   def show
     @comment = @ticket.comments.new
     @comments = @ticket.comments
+    @ticket_histories = @ticket.get_histories
   end
 
   def create
@@ -30,6 +31,21 @@ class TicketsController < ApplicationController
   end
 
 
+  def edit
+
+  end
+
+
+  def update
+    if @ticket.update_attributes(ticket_params)
+      flash[:notice] = "Updated successfully"
+      redirect_to ticket_path(@ticket.id)
+    else
+      flash.now[:alert] = @ticket.errors.full_messages.join(", ")
+      render :edit
+    end
+  end
+
   private
 
   def ticket_params
@@ -37,7 +53,7 @@ class TicketsController < ApplicationController
   end
 
   def get_user_tickets
-    @tickets = Ticket.user_tickets(params[:email]).paginate(page: params[:page], per_page: 10) if params[:email]
+    @tickets = Ticket.user_tickets(params[:email]).order(created_at: :desc).paginate(page: params[:page], per_page: 10) if params[:email]
     get_last_tickets_comments
   end
 

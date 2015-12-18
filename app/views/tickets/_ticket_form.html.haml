@@ -1,0 +1,15 @@
+.form-group
+  =f.label :email
+  =f.email_field :email, class: "form-control"
+.form-group
+  =f.label :user_name
+  =f.text_field :user_name, class: "form-control"
+.form-group
+  =f.label :problem_type_id
+  =f.select :problem_type_id, options_from_collection_for_select(ProblemType.active_problem_types, "id", "name"), {prompt: "Select Problem Type"}, class: "form-control"
+.form-group
+  =f.label :title
+  =f.text_field :title, class: "form-control"
+.form-group
+  =f.label :text
+  =f.text_area :text, class: "form-control"

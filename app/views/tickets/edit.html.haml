@@ -14,10 +14,10 @@
       %h3.panel-title Create ticket
     .panel-body
       .col-lg-12
-        =form_for @ticket, method: :post, role: "form" do |f|
+        =form_for @ticket, method: :put, role: "form" do |f|
           =render partial: "ticket_form", locals:{f:f}
           .form-group
-            =f.submit "Create", class: "btn btn-default"
+            =f.submit "Update", class: "btn btn-default"
 .col-sm-5
   .panel.panel-success
     .panel-heading
