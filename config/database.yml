@@ -19,8 +19,8 @@ production:
   pool: 5
   encoding: UTF8
   timeout: 5000
-  host: ec2-54-195-252-202.eu-west-1.compute.amazonaws.com
-  username: auto_parts
-  password: polopolo
+  host: localhost
+#  username: auto_parts
+#  password: polopolo
   adapter: postgresql
   database: support_issue_traking_production
