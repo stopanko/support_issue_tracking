@@ -19,9 +19,9 @@ ActiveAdmin.register Ticket do
   end
 
   scope :all_tickets
-  Status.order("name DESC").each do |status|
-    scope status.name.to_sym
-  end
+  # Status.order("name DESC").each do |status|
+  #   scope status.name.to_sym
+  # end
 
   # ProblemType.all.each do |type|
   #   scope type.name.to_sym, ->{where(problem_type_id: type.id)}
