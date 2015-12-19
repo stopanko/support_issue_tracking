@@ -5,4 +5,6 @@ class AdminUser < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :comments
+
+  has_many :tickets
 end

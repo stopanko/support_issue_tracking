@@ -11,6 +11,11 @@
     .panel-heading
       %h3.panel-title Ticket info
     .panel-body
+      -if @ticket.admin_user
+        =label_tag :ownership
+        .well
+          %b
+            =@ticket.admin_user.email
       =label_tag :problem_type
       .well
         =@ticket.problem_type.name

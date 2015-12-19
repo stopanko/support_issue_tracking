@@ -19,7 +19,7 @@ class TicketsController < ApplicationController
     add_breadcrumb 'Ticket', ticket_path(@ticket.id), prepend: '<i class="fa fa-user"></i> '
     add_breadcrumb 'Edit', edit_ticket_path(@ticket.id), prepend: '<i class="fa fa-edit"></i> '
     @comment = Comment.new
-    @comments = @ticket.comments.limit(5)
+    @comments = @ticket.comments.order(created_at: :desc).limit(5)
     @ticket_histories = @ticket.get_histories.limit(5)
   end
 

@@ -24,3 +24,11 @@
 .hidden{
     display: none;
 }
+
+.edit_user_comment:hover{
+    cursor: pointer;
+}
+
+.comment_edit_form{
+    display: none;
+}

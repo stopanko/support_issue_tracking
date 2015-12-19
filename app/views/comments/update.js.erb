@@ -1,0 +1,6 @@
+<%unless @errors%>
+    $(".comment_line[data_comment_id = '<%=@comment.id%>'] .comment_text").text('<%=@comment.text%>');
+    $(".comment_line[data_comment_id = '<%=@comment.id%>'] .edit_user_comment").click();
+<%else%>
+    alert('<%=@errors.join(", ")%>');
+<%end%>

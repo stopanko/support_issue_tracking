@@ -15,9 +15,19 @@ class CommentsController < ApplicationController
   end
 
   def get_next_ticket_comments
-    @next_ticket_comments = @ticket.comments.offset(params[:comments_count]).limit(5)
+    @next_ticket_comments = @ticket.comments.order(created_at: :desc).offset(params[:comments_count]).limit(5)
     p "@next_ticket_comments"
     p @next_ticket_comments
+    respond_to :js
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    if @comment.update_attributes(comment_params)
+
+    else
+      @errors = @comment.errors.full_messages
+    end
     respond_to :js
   end
 

@@ -1,9 +1,17 @@
-.well.comment_line
+.well.comment_line{data_comment_id: comment.id}
   -if comment.admin_user_id
     =comment.admin_user.email
   -else
     =comment.commentable.email
+    .pull-right.edit_user_comment{data_comment_id: comment.id}
+      %i.fa.fa-edit
+        Edit
   .well.history_action_info
-    =comment.text
+    .comment_text
+      =comment.text
+    .comment_edit_form
+      =form_for comment, method: :put, remote: true do |f|
+        =f.text_area :text, class: "form-control"
+        =f.submit "Update", class: "btn btn-default"
     .pull-right
       =comment.created_at.strftime("%d-%M-%Y")
