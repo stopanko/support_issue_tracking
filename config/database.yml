@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+  host: localhost
+  username: auto_parts
+  password: polopolo
+
+development:
+  <<: *default
+  database: support_issue_traking_development
+
+test:
+  <<: *default
+  database: support_issue_traking_test
+
+production:
+  adapter: postgresql
+  database: support_issue_traking_production
