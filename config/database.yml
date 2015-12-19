@@ -20,7 +20,7 @@ production:
   encoding: UTF8
   timeout: 5000
   host: localhost
-#  username: auto_parts
-#  password: polopolo
+  username: auto_parts
+  password: polopolo
   adapter: postgresql
   database: support_issue_traking_production
