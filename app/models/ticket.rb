@@ -16,13 +16,17 @@ class Ticket < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments, :allow_destroy => true
 
-  # Status.all.each do |status|
-  #   scope status.name.to_sym, ->{where(status_id: status.id)}
-  # end
-  #
-  # ProblemType.all.each do |type|
-  #   scope type.name.to_sym, ->{where(problem_type_id: type.id)}
-  # end
+  if Status.all.count > 0
+    Status.all.each do |status|
+      scope status.name.to_sym, ->{where(status_id: status.id)}
+    end
+  end
+
+  if ProblemType.all.count > 0
+    ProblemType.all.each do |type|
+      scope type.name.to_sym, ->{where(problem_type_id: type.id)}
+    end
+  end
 
 
   def get_histories
