@@ -15,12 +15,5 @@
 #  database: support_issue_traking_test
 
 production:
-  adapter: postgresql
+  encoding: utf8
   pool: 5
-  encoding: UTF8
-  timeout: 5000
-  host: ec2-54-195-252-202.eu-west-1.compute.amazonaws.com
-  username: xjjbitmplfevxd
-  password: NALsthJItZwsyg8ztUyCqGuycT
-  adapter: postgresql
-  database: d8ig4rs2jsv3t6
