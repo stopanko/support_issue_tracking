@@ -4,7 +4,7 @@
   ticket page
 -content_for :current_page_breadcrumb do
   %i.fa.fa-dashboard
-    =link_to ticket_path(@ticket.id) do
+    =link_to email_ticket_path(@ticket.id, email_param) do
       Show Ticket
 .col-sm-7
   .panel.panel-primary

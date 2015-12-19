@@ -9,6 +9,7 @@ class Ticket < ActiveRecord::Base
 
 
   scope :user_tickets, ->(user_email) {where(email: user_email)}
+  scope :all_tickets, -> {}
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :ticket_histories, dependent: :destroy

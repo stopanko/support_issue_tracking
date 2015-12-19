@@ -7,10 +7,11 @@ class CommentsController < ApplicationController
     @comment = @ticket.comments.new(comment_params)
     if @comment.save
       flash[:notice] = "Commented"
-      redirect_to ticket_path(@ticket.id)
+      AdminMailer.new_comment_created(@comment).deliver_later
+      redirect_to email_ticket_path(@ticket.id, @ticket.email.gsub(".", "_"))
     else
       flash[:alert] = @comment.errors.full_messages.join(", ")
-      redirect_to ticket_path(@ticket.id)
+      redirect_to email_ticket_path(@ticket.id, @ticket.email.gsub(".", "_"))
     end
   end
 

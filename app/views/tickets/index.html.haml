@@ -38,11 +38,11 @@
                   %td=ticket.title
                   %td=ticket.status.name
                   %td=ticket.problem_type.name
-                  %td=link_to ticket.comments.count, ticket_path(ticket.id)
+                  %td=link_to ticket.comments.count, email_ticket_path(ticket.id, email_param)
                   %td
-                    =link_to "Show", ticket_path(ticket.id)
+                    =link_to "Show", email_ticket_path(ticket.id, email_param)
                     |
-                    =link_to "Edit", edit_ticket_path(ticket.id)
+                    =link_to "Edit", edit_email_ticket_path(ticket.id, email_param)
           =will_paginate @tickets, renderer: BootstrapPagination::Rails
   .col-sm-5
     .panel.panel-success
@@ -53,7 +53,7 @@
       .panel-body
         .table-responsive
           -@last_comments.each do |comment|
-            =link_to ticket_path(comment.commentable_id) do
+            =link_to email_ticket_path(comment.commentable_id, email_param) do
               .well
                 =comment.text
 

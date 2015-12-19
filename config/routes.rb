@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root "home#index"
 
+  get "ticket/:id/mail/:email", to: "tickets#show", as: "email_ticket"
+  get "edit_ticket/:id/mail/:email", to: "tickets#edit", as: "edit_email_ticket"
   resources :tickets do
     member do
       resource :comment

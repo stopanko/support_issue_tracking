@@ -1,0 +1,13 @@
+= stylesheet_link_tag    'main', media: 'all', 'data-turbolinks-track' => true
+=hidden_field_tag "get_next_ticket_history", get_next_ticket_history_ticket_path(@ticket.id)
+.col-lg-12
+  .panel.panel-success
+    .panel-heading
+      %h3.panel-title
+        %i.fa.fa-clock-o.fa-fw
+        Ticket history
+    .panel-body
+      .col-lg-12
+        .ticket_history
+          =render partial: "/tickets/ticket_history_line", collection: @ticket_histories, as: :history
+          #ticket_history_element

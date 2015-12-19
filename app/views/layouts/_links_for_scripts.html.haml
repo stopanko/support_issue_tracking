@@ -1,2 +1,2 @@
-=text_field_tag "get_next_ticket_comments", get_next_ticket_comments_ticket_path(@ticket.id) if @ticket
-=text_field_tag "get_next_ticket_history", get_next_ticket_history_ticket_path(@ticket.id) if @ticket
+=text_field_tag "get_next_ticket_comments", get_next_ticket_comments_ticket_path(@ticket.id) if @ticket && !@ticket.new_record?
+=text_field_tag "get_next_ticket_history", get_next_ticket_history_ticket_path(@ticket.id) if @ticket && !@ticket.new_record?
