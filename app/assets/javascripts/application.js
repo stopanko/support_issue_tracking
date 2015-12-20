@@ -46,17 +46,22 @@ $(document).ready(function(){
 
 
 
+    $.edit_user_comment = function(){
+        $(".edit_user_comment").unbind("click");
+        $(".edit_user_comment").click(function(){
+            var context = $(".comment_line[data_comment_id = "+$(this).attr('data_comment_id')+"]");
+            if ( context.find(".comment_edit_form").is(":visible")){
+                context.find(".comment_edit_form").hide(300);
+                context.find(".comment_text").show(300);
+            }else{
+                context.find(".comment_edit_form").show(300);
+                context.find(".comment_text").hide(300);
+            }
+        });
+    };
+
+    $.edit_user_comment();
 
 
-    $(".edit_user_comment").click(function(){
-        var context = $(".comment_line[data_comment_id = "+$(this).attr('data_comment_id')+"]");
-        if ( context.find(".comment_edit_form").is(":visible")){
-            context.find(".comment_edit_form").hide(300);
-            context.find(".comment_text").show(300);
-        }else{
-            context.find(".comment_edit_form").show(300);
-            context.find(".comment_text").hide(300);
-        }
-    });
 
 });
