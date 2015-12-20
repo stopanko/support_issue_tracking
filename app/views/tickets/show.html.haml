@@ -36,7 +36,7 @@
         =f.submit "Comment", class: "btn btn-default"
       %hr
       =label_tag :comments
-      =@comments.count
+      =@ticket.comments.count
       .ticket_comments
         =render partial: "comments/comment_line", collection: @comments, as: :comment
         #ticket_comments_element
