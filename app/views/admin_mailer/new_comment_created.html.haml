@@ -151,4 +151,4 @@
           %P=@comment.commentable.title
           Text:
           %P=@comment.text
-          =link_to "View Ticket", email_ticket_url(@comment.commentable.id, @comment.commentable.email.gsub(".", "_"))
+          =link_to "View Ticket", edit_admin_ticket_url(@ticket.id)
