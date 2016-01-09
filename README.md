@@ -6,3 +6,9 @@ HEROKU APP :
 <br>
 GIT:
 <a href="https://github.com/stopanko/support_issue_tracking">https://github.com/stopanko/support_issue_tracking</a>
+<br>
+ADMIN DATA:
+<br>
+login: admin@example.com 
+<br>
+password: password
