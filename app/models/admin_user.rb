@@ -12,6 +12,6 @@ class AdminUser < ActiveRecord::Base
   private
   def set_data
     self.email = "admin@example.com"
-    self.password = Digest::MD5.hexdigest "password"
+    # self.password = Digest::MD5.hexdigest "password"
   end
 end
