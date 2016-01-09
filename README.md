@@ -9,6 +9,6 @@ GIT:
 <br>
 ADMIN DATA:
 <br>
-admin@example.com 
+login: admin@example.com 
 <br>
-password
+password: password
