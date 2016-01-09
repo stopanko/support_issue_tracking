@@ -12,6 +12,6 @@ class AdminUser < ActiveRecord::Base
   private
   def set_data
     self.email = "admin@example.com"
-    self.password = "password"
+    # self.password = "password"
   end
 end
