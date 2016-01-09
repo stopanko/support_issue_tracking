@@ -2,7 +2,7 @@ ActiveAdmin.register Status do
 
   permit_params :name, :color, :active, :costumer_default, :admin_default
 
-  actions :index, :show, :edit, :update, :new, :create
+  actions :index, :show, :edit, :new
 
   scope :all
   scope :costumer_default

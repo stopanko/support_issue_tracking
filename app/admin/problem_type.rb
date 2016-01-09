@@ -2,7 +2,7 @@ ActiveAdmin.register ProblemType do
 
 
   permit_params :name, :active
-  actions :index, :show, :edit, :update, :new, :create
+  actions :index, :show, :edit, :new
 
 
 end
